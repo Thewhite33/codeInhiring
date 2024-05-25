@@ -10,7 +10,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { addDoc } from 'firebase/firestore';
 import { applyRef } from '@/firebase';
 
-const page = () => {
+const Page = () => {
   const { toast } = useToast()
   const [currentstep,setCurrentstep] = useState(0);
   const [isBasicValid, setIsBasicValid] = useState(false);
@@ -53,10 +53,10 @@ const page = () => {
     return false;
   };
   const steps = [
-    <About/>,
-    <Roles/>,
-    <Basic setIsValid={setIsBasicValid} setFormData={setFormData} formData={formData}/>,
-    <Skills setIsValid={setIsSkillsValid} setFormData={setFormData} formData={formData}/>,
+    <About key={0}/>,
+    <Roles key={1}/>,
+    <Basic setIsValid={setIsBasicValid} setFormData={setFormData} formData={formData} key={2}/>,
+    <Skills setIsValid={setIsSkillsValid} setFormData={setFormData} formData={formData} key={3}/>,
   ]
   const handleNext = () => {
     if(currentstep<steps.length-1){
@@ -86,4 +86,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
